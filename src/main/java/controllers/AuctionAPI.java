@@ -16,6 +16,10 @@ public class AuctionAPI {
         this.bidders = new ConnectedList<>();
     }
 
+    public void addBidder(Bidder bidder){
+        bidders.add(bidder);
+    }
+
     public void clear(){
         soldItems.clear();
         unsoldItems.clear();

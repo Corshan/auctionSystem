@@ -1,8 +1,16 @@
 package controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import main.Driver;
 
 public class mainViewController {
+
+    public void switchToBiddersView() throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("bidders-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Driver.mainStage.setScene(scene);
+    }
 
     public void save(){
         try{
