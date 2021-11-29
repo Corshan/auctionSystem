@@ -26,6 +26,12 @@ public class ConnectedList<E> implements Iterable<E>{
         Node<E> temp = head;
         temp.prev = null;
 
+        if (index == 0 && size == 1){
+            head.prev = null;
+            size -= 1;
+            return;
+        }
+
         if (index == 0){
             head = temp.next;
             head.prev = null;
