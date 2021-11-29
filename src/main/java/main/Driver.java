@@ -36,7 +36,7 @@ public class Driver extends Application {
 
     public static void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
-        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("VaccinationCentre.xml"));
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("AuctionSystem.xml"));
         out.writeObject(auctionAPI);
         out.close();
     }
@@ -44,7 +44,7 @@ public class Driver extends Application {
     public static void load() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         xstream.addPermission(AnyTypePermission.ANY); //https://stackoverflow.com/questions/30812293/com-thoughtworks-xstream-security-forbiddenclassexception
-        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("VaccinationCentre.xml"));
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("AuctionSystem.xml"));
         auctionAPI = (AuctionAPI) is.readObject();
         is.close();
     }

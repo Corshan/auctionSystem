@@ -109,7 +109,7 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <ListView fx:id="bidderListView" prefHeight="314.0" prefWidth="274.0" />
+                  <ListView fx:id="bidderListView" onMouseClicked="#switchToBidderInfoView" prefHeight="314.0" prefWidth="274.0" />
                </children>
                <padding>
                   <Insets top="10.0" />

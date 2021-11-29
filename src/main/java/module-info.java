@@ -5,7 +5,7 @@ module com.example.auctionsystem {
 
 
     opens main to javafx.fxml, xstream;
-    opens controllers to javafx.fxml;
+    opens controllers to javafx.fxml, xstream;
     opens models to xstream;
     opens utils to xstream;
     exports main;
