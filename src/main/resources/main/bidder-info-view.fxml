@@ -49,25 +49,25 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="Label" />
+                        <Label fx:id="nameLabel" text="Label" />
                         <Label text="Phone Number">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="Label" />
+                        <Label fx:id="phoneLabel" text="Label" />
                         <Label text="Adddress">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="Label" />
+                        <Label fx:id="addressLabel" text="Label" />
                         <Label text="Email">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <Label text="Label" />
+                        <Label fx:id="emailLabel" text="Label" />
                      </children>
                   </VBox>
                   <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
@@ -81,13 +81,13 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField />
+                              <TextField fx:id="nameTextfield" />
                               <Label text="Phone Number">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField />
+                              <TextField fx:id="phoneTextField" />
                            </children>
                         </VBox>
                         <VBox prefHeight="154.0" prefWidth="157.0">
@@ -97,13 +97,18 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField />
+                              <TextField fx:id="addressTextField" />
                               <Label text="Email">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField />
+                              <TextField fx:id="emailTextField" />
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="111.0" layoutY="14.0" mnemonicParsing="false" onAction="#editBidder" text="Save" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </VBox>
                      </children>
