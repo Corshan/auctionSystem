@@ -57,4 +57,9 @@ public class Bidder {
     public void setBids(ConnectedList<Bid> bids) {
         this.bids = bids;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
