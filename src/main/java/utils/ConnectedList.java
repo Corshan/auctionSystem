@@ -26,7 +26,7 @@ public class ConnectedList<E> implements Iterable<E>{
         Node<E> temp = head;
         temp.prev = null;
 
-        if (index == 0 && size == 1){
+        if (size == 1){
             head.prev = null;
             size -= 1;
             return;
@@ -60,7 +60,6 @@ public class ConnectedList<E> implements Iterable<E>{
 
         if (head.contents.equals(e)){
             head = temp.next;
-            head.prev = null;
             size -= 1;
             return;
         }
