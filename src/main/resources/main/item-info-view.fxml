@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BidderInfoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LotInfoController">
     <children>
         <MenuBar>
             <menus>
@@ -95,32 +95,32 @@
                   </HBox>
                         <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
                         <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" />
-                        <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0" visible="false">
+                        <HBox fx:id="editFields" layoutX="202.0" layoutY="-2.0" prefHeight="182.0" prefWidth="242.0" spacing="10.0">
                             <children>
                                 <VBox prefHeight="154.0" prefWidth="150.0">
                                     <children>
-                                        <Label text="Name">
+                                        <Label text="Title">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="nameTextfield" />
-                                        <Label text="Phone Number">
+                                        <TextField fx:id="titleTextfield" />
+                                        <Label text="Description">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="phoneTextField" />
+                                        <TextField fx:id="descriptionTextField" />
                                     </children>
                                 </VBox>
-                                <VBox prefHeight="154.0" prefWidth="157.0">
+                                <VBox prefHeight="182.0" prefWidth="89.0">
                                     <children>
-                                        <Label text="Adddress">
+                                        <Label text="Type">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="addressTextField" />
+                                        <TextField fx:id="typeTextField" prefHeight="26.0" prefWidth="107.0" />
                                         <Label text="Email">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
