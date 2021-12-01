@@ -71,7 +71,7 @@
                      </children>
                   </VBox>
                   <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
-                  <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" />
+                  <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeBidder" text="Delete" />
                   <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0" visible="false">
                      <children>
                         <VBox prefHeight="154.0" prefWidth="150.0">
