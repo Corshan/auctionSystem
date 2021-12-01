@@ -3,7 +3,6 @@ module com.example.auctionsystem {
     requires javafx.fxml;
     requires xstream;
 
-
     opens main to javafx.fxml, xstream;
     opens controllers to javafx.fxml, xstream;
     opens models to xstream;
