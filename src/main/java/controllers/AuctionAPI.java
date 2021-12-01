@@ -1,6 +1,7 @@
 package controllers;
 
 import models.AuctionLot;
+import models.Bid;
 import models.Bidder;
 import utils.ConnectedList;
 
@@ -18,6 +19,10 @@ public class AuctionAPI {
 
     public void addBidder(Bidder bidder){
         bidders.add(bidder);
+    }
+
+    public void removeBidder(Bidder bidder){
+        bidders.remove(bidder);
     }
 
     public void clear(){

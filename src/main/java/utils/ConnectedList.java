@@ -60,7 +60,7 @@ public class ConnectedList<E> implements Iterable<E>{
 
         if (head.contents.equals(e)){
             head = temp.next;
-            head.prev = null;
+            //head.prev = null;
             size -= 1;
             return;
         }
