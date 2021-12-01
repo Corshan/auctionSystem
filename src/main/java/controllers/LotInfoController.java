@@ -3,12 +3,39 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import main.Driver;
+import models.AuctionLot;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class LotInfoController {
     @FXML
-    TextField
+    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, saleTimeLabel, salePriceLabel;
+    @FXML
+    TextField titleTextField, descriptionTextField, typeTextField, priceTextField, imageTextField;
+    @FXML
+    DatePicker originDate;
+    @FXML
+    ToggleButton editButton;
+    @FXML
+    HBox editFields;
+
+    private AuctionLot currentAuctionLot;
+
+    public void initialize(){
+        currentAuctionLot = MainViewController.currentAuctionLot;
+        titleLabel.setText(currentAuctionLot.getTitle());
+        descriptionLabel.setText(currentAuctionLot.getDescription());
+        typeLabel.setText(currentAuctionLot.getType());
+        originDateLabel.setText(currentAuctionLot.getOriginDate());
+        priceLabel.setText(currentAuctionLot.getPrice() + "");
+        imageLabel.setText(currentAuctionLot.getImageURL());
+        saleTimeLabel.setText(currentAuctionLot.getSaleTime() + currentAuctionLot.getSaleDate());
+        salePriceLabel.setText(currentAuctionLot.getSalePrice() + "");
+    }
 
     public void switchToMainView() throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("main-view.fxml"));
@@ -25,24 +52,29 @@ public class LotInfoController {
     public void showEditFields() {
         if (editButton.isSelected()) {
             editFields.setVisible(true);
-            nameTextfield.setText(currentBidder.getName());
-            phoneTextField.setText(currentBidder.getPhone());
-            addressTextField.setText(currentBidder.getAddress());
-            emailTextField.setText(currentBidder.getEmail());
-
+            titleTextField.setText(currentAuctionLot.getTitle());
+            descriptionTextField.setText(currentAuctionLot.getDescription());
+            typeTextField.setText(currentAuctionLot.getType());
+            originDate.setValue(LocalDate.parse(currentAuctionLot.getOriginDate()));
+            priceTextField.setText(currentAuctionLot.getPrice() + "");
+            imageTextField.setText(currentAuctionLot.getImageURL());
         } else editFields.setVisible(false);
     }
 
     public void editBidder(){
-        currentBidder.setName(nameTextfield.getText());
-        currentBidder.setPhone(phoneTextField.getText());
-        currentBidder.setAddress(addressTextField.getText());
-        currentBidder.setEmail(emailTextField.getText());
+        currentAuctionLot.setTitle(titleTextField.getText());
+        currentAuctionLot.setDescription(descriptionTextField.getText());
+        currentAuctionLot.setType(typeTextField.getText());
+        currentAuctionLot.setOriginDate(originDate.getValue().toString());
+        currentAuctionLot.setPrice(Float.parseFloat(priceTextField.getText()));
+        currentAuctionLot.setImageURL(imageTextField.getText());
 
-        nameLabel.setText(currentBidder.getName());
-        phoneLabel.setText(currentBidder.getPhone());
-        addressLabel.setText(currentBidder.getAddress());
-        emailLabel.setText(currentBidder.getEmail());
+        titleLabel.setText(titleTextField.getText());
+        descriptionLabel.setText(descriptionTextField.getText());
+        typeLabel.setText(typeTextField.getText());
+        originDateLabel.setText(originDate.getValue().toString());
+        priceLabel.setText(priceTextField.getText());
+        imageLabel.setText(imageTextField.getText());
     }
 
 

@@ -21,13 +21,13 @@ public class AuctionAPI {
         bidders.add(bidder);
     }
 
-
     public void addAuctionLot(AuctionLot auctionLot){unsoldItems.add(auctionLot);}
 
     public void removeBidder(Bidder bidder){
         bidders.remove(bidder);
     }
 
+    public void removeAuctionLot(AuctionLot auctionLot){unsoldItems.remove(auctionLot);}
 
     public void clear(){
         soldItems.clear();
