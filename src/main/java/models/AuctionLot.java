@@ -28,8 +28,6 @@ public class AuctionLot {
         this.bids = new ConnectedList<>();
     }
 
-
-
     public String getTitle() {
         return title;
     }
@@ -108,5 +106,10 @@ public class AuctionLot {
 
     public void setBids(ConnectedList<Bid> bids) {
         this.bids = bids;
+    }
+
+    @Override
+    public String toString() {
+        return title + " " + description;
     }
 }

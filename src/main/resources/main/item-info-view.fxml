@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BidderInfoController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="System">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#load" text="Load" />
+                        <MenuItem mnemonicParsing="false" onAction="#clear" text="Reset" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Navigation">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#switchToMainView" text="View Auction Lots" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToBiddersView" text="View Bidders" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <VBox alignment="TOP_CENTER" prefHeight="337.0" prefWidth="560.0">
+            <children>
+                <Label alignment="CENTER" text="Item  Information">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                  <HBox prefHeight="182.0" prefWidth="200.0">
+                     <children>
+                              <VBox prefHeight="182.0" prefWidth="100.0">
+                                  <children>
+                                      <Label text="Title">
+                                          <font>
+                                              <Font name="System Bold Italic" size="13.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="nameLabel" text="Label" />
+                                      <Label text="Description">
+                                          <font>
+                                              <Font name="System Bold Italic" size="13.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="phoneLabel" text="Label" />
+                                      <Label text="Type">
+                                          <font>
+                                              <Font name="System Bold Italic" size="13.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="addressLabel" text="Label" />
+                                      <Label text="Origin Date">
+                                          <font>
+                                              <Font name="System Bold Italic" size="13.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="emailLabel" text="Label" />
+                                  </children>
+                              </VBox>
+                        <VBox prefHeight="182.0" prefWidth="101.0">
+                           <children>
+                              <Label text="Price">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" />
+                              <Label text="Image URL">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" />
+                              <Label text="Sale Time">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" />
+                              <Label text="Sale Price">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                        <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
+                        <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" />
+                        <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0" visible="false">
+                            <children>
+                                <VBox prefHeight="154.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="Name">
+                                            <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="nameTextfield" />
+                                        <Label text="Phone Number">
+                                            <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="phoneTextField" />
+                                    </children>
+                                </VBox>
+                                <VBox prefHeight="154.0" prefWidth="157.0">
+                                    <children>
+                                        <Label text="Adddress">
+                                            <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addressTextField" />
+                                        <Label text="Email">
+                                            <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="emailTextField" />
+                                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                            <children>
+                                                <Button layoutX="111.0" layoutY="14.0" mnemonicParsing="false" onAction="#editBidder" text="Save" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+                <ListView prefHeight="152.0" prefWidth="465.0" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </VBox.margin>
+        </VBox>
+    </children>
+</VBox>
