@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Driver;
 import models.AuctionLot;
@@ -43,10 +44,22 @@ public class MainViewController {
         Driver.mainStage.setScene(scene);
     }
 
-    public void switchToItemView() throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("item-info-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        Driver.mainStage.setScene(scene);
+    public void switchToItemViewUnsold(MouseEvent mouseEvent) throws Exception{
+        if (mouseEvent.getClickCount() == 2) {
+            currentAuctionLot = unsoldItems.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("item-info-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Driver.mainStage.setScene(scene);
+        }
+    }
+
+    public void switchToItemViewSold(MouseEvent mouseEvent) throws Exception{
+        if (mouseEvent.getClickCount() == 2) {
+            currentAuctionLot = soldItems.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("item-info-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Driver.mainStage.setScene(scene);
+        }
     }
 
     @FXML

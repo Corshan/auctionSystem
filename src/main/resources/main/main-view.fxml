@@ -11,14 +11,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="System">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Load" />
-                  <MenuItem mnemonicParsing="false" text="Reset" />
+              <MenuItem mnemonicParsing="false" text="Save" onAction="#save"/>
+                  <MenuItem mnemonicParsing="false" text="Load" onAction="#load"/>
+                  <MenuItem mnemonicParsing="false" text="Reset" onAction="#clear"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Navigation">
             <items>
-              <MenuItem mnemonicParsing="false" text="View Bidders" />
+              <MenuItem mnemonicParsing="false" text="View Bidders" onAction="#switchToBiddersView"/>
             </items>
           </Menu>
         </menus>
@@ -32,8 +32,8 @@
             </Label>
             <HBox prefHeight="346.0" prefWidth="560.0" spacing="10.0">
                <children>
-                  <ListView fx:id="unsoldItems" prefHeight="314.0" prefWidth="279.0" />
-                  <ListView fx:id="soldItems" prefHeight="314.0" prefWidth="274.0" />
+                  <ListView fx:id="unsoldItems" prefHeight="314.0" prefWidth="279.0" onMouseClicked="#switchToItemViewUnsold"/>
+                  <ListView fx:id="soldItems" prefHeight="314.0" prefWidth="274.0" onMouseClicked="#switchToItemViewSold"/>
                </children>
                <padding>
                   <Insets top="10.0" />
