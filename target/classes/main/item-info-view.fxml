@@ -95,32 +95,32 @@
                   </HBox>
                         <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
                         <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" />
-                        <HBox fx:id="editFields" layoutX="202.0" layoutY="-2.0" prefHeight="182.0" prefWidth="242.0" spacing="10.0">
+                        <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0" visible="false">
                             <children>
                                 <VBox prefHeight="154.0" prefWidth="150.0">
                                     <children>
-                                        <Label text="Title">
+                                        <Label text="Name">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="titleTextfield" />
-                                        <Label text="Description">
+                                        <TextField fx:id="nameTextfield" />
+                                        <Label text="Phone Number">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="descriptionTextField" />
+                                        <TextField fx:id="phoneTextField" />
                                     </children>
                                 </VBox>
-                                <VBox prefHeight="182.0" prefWidth="89.0">
+                                <VBox prefHeight="154.0" prefWidth="157.0">
                                     <children>
-                                        <Label text="Type">
+                                        <Label text="Adddress">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="typeTextField" prefHeight="26.0" prefWidth="107.0" />
+                                        <TextField fx:id="addressTextField" />
                                         <Label text="Email">
                                             <font>
                                                 <Font name="System Bold Italic" size="13.0" />
