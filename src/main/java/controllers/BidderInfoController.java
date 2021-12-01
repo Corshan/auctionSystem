@@ -3,12 +3,12 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import main.Driver;
 import models.Bidder;
+
+import java.util.Optional;
 
 public class BidderInfoController {
 
@@ -67,6 +67,17 @@ public class BidderInfoController {
         phoneLabel.setText(currentBidder.getPhone());
         addressLabel.setText(currentBidder.getAddress());
         emailLabel.setText(currentBidder.getEmail());
+    }
+
+    public void removeBidder() throws Exception{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Bidder");
+        alert.setHeaderText("Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Driver.auctionAPI.removeBidder(currentBidder);
+            switchToBiddersView();
+        }
     }
 
     public void save() {
