@@ -1,6 +1,10 @@
 package utils;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Random;
 
 public class ConnectedList<E> implements Iterable<E>{
     private Node<E> head = null;
@@ -165,10 +169,47 @@ public class ConnectedList<E> implements Iterable<E>{
 
         while (temp.next != null){
             temp = temp.next;
-            list = list + temp.getContents().toString();
+            list = list + temp.getContents().toString() + "\n";
         }
         return list;
     }
+
+    public void mergeSort(Comparator<E> comparator){
+        if (size > 1){
+
+            int x = size/2, y = size - x;
+            ConnectedList<E> list1 = new ConnectedList<>();
+            ConnectedList<E> list2 = new ConnectedList<>();
+
+            int i;
+            for(i = 0; i < x; i++){
+                list1.add(get(i));
+            }
+            for(int i2 = 0; i2 < y; i2++, i++){
+                list2.add(get(i));
+            }
+
+            list1.mergeSort(comparator);
+            list2.mergeSort(comparator);
+
+            i = 0;
+            int xai = 0, yai = 0;
+
+            while (xai < list1.size && yai < list2.size){
+                set(i++,comparator.compare(list1.get(xai),list2.get(yai))< 0 ? list1.get(xai++) : list2.get(yai++));
+            }
+
+            while (xai< list1.size){
+                set(i++, list1.get(xai++));
+            }
+
+            while (yai< list2.size){
+                set(i++, list2.get(yai++));
+            }
+        }
+    }
+
+
 
     @Override
     public Iterator<E> iterator() {

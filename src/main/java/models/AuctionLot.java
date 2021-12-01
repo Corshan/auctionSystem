@@ -28,6 +28,8 @@ public class AuctionLot {
         this.bids = new ConnectedList<>();
     }
 
+
+
     public String getTitle() {
         return title;
     }
