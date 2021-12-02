@@ -3,6 +3,7 @@ package utils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
@@ -13,9 +14,13 @@ class ConnectedListTest {
 
     @BeforeEach
     void setUp() {
-        for (int i = 0; i <= 10000; i++) {
-            list.add(getAlphaNumericString(6));
-        }
+//        for (int i = 0; i <= 10000; i++) {
+//            list.add(getAlphaNumericString(6));
+//        }
+
+        list.add("hello");
+        list.add("Hi");
+        list.add("goodBye");
     }
 
     @AfterEach

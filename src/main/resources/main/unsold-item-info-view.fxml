@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LotInfoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LotInfoController">
     <children>
         <MenuBar>
             <menus>
@@ -104,7 +104,24 @@
                      </children>
                   </HBox>
                         <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
-                        <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" />
+                        <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeLot" text="Delete" />
+                  <HBox fx:id="bidHBox" layoutX="193.0" layoutY="15.0" prefHeight="100.0" prefWidth="242.0" visible="false">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="79.0">
+                           <children>
+                              <Label layoutY="5.0" text="Bidder Name" />
+                              <Label layoutX="26.0" layoutY="41.0" text="Amount" />
+                           </children>
+                        </AnchorPane>
+                        <VBox prefHeight="100.0" prefWidth="130.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="bidderName" />
+                              <TextField fx:id="amount" />
+                              <Button mnemonicParsing="false" text="Add" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                         <HBox fx:id="editFields" layoutX="202.0" layoutY="-2.0" prefHeight="182.0" prefWidth="242.0" spacing="10.0" visible="false">
                             <children>
                                 <VBox prefHeight="182.0" prefWidth="114.0">
@@ -158,6 +175,7 @@
                                 </VBox>
                             </children>
                         </HBox>
+                  <ToggleButton fx:id="addBid" layoutX="457.0" layoutY="40.0" mnemonicParsing="false" onAction="#showAddBid" text="Add Bid" />
                     </children>
                 </AnchorPane>
                 <ListView prefHeight="152.0" prefWidth="465.0" />

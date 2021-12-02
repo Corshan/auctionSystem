@@ -29,6 +29,14 @@ public class AuctionAPI {
 
     public void removeAuctionLot(AuctionLot auctionLot){unsoldItems.remove(auctionLot);}
 
+    public void addBidToLot(){
+
+    }
+
+    public void findBidder(String name){
+
+    }
+
     public void clear(){
         soldItems.clear();
         unsoldItems.clear();
