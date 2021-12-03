@@ -10,6 +10,7 @@ import models.AuctionLot;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class LotInfoController {
     @FXML
@@ -61,7 +62,7 @@ public class LotInfoController {
         } else editFields.setVisible(false);
     }
 
-    public void editBidder(){
+    public void editAuctionLot(){
         currentAuctionLot.setTitle(titleTextField.getText());
         currentAuctionLot.setDescription(descriptionTextField.getText());
         currentAuctionLot.setType(typeTextField.getText());
@@ -77,6 +78,16 @@ public class LotInfoController {
         imageLabel.setText(imageTextField.getText());
     }
 
+    public void removeAuctionLot() throws Exception{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Auction Lot");
+        alert.setHeaderText("Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Driver.auctionAPI.removeAuctionLot(currentAuctionLot);
+            switchToMainView();
+        }
+    }
 
     public void save(){
         try{
