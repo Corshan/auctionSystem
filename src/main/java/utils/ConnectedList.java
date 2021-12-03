@@ -25,6 +25,17 @@ public class ConnectedList<E> implements Iterable<E>{
         size += 1;
     }
 
+    public void addFromTop(E element){
+        Node<E> n = new Node<>();
+        n.setContents(element);
+        if(head != null){
+            head.next = n;
+        }
+        n.next = head;
+        head = n;
+        size += 1;
+    }
+
     public void remove(int index){
         int i = 0;
         Node<E> temp = head;
