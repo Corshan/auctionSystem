@@ -65,7 +65,7 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="sortChoiceBox" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="174.0" prefWidth="271.0" spacing="5.0">
@@ -91,6 +91,7 @@
                                  <children>
                                     <Label text="Phone" />
                                     <TextField fx:id="addBidderPhone" />
+                                    <Label fx:id="errorMessage" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="11.0" prefWidth="271.0" spacing="10.0">
