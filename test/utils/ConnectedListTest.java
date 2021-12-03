@@ -14,13 +14,9 @@ class ConnectedListTest {
 
     @BeforeEach
     void setUp() {
-//        for (int i = 0; i <= 10000; i++) {
-//            list.add(getAlphaNumericString(6));
-//        }
-
-        list.add("hello");
-        list.add("Hi");
-        list.add("goodBye");
+        for (int i = 0; i <= 10000; i++) {
+            list.add(getAlphaNumericString(6));
+        }
     }
 
     @AfterEach
