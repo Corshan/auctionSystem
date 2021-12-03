@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.LinkedList;
-import java.util.List;
 
 public class HashTable<E> {
     E[] hashTable;
