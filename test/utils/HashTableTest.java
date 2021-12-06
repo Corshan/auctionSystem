@@ -33,9 +33,6 @@ class HashTableTest {
         assertNotNull(hashTable.get(6));
         assertEquals(hashTable.get(6), "Hi 6");
         hashTable.remove(6, "Hi 6");
-        for(int i = 0; i < hashTable.size(); i++){
-            System.out.println(hashTable.get(i));
-        }
         assertNull(hashTable.get(6));
     }
 
@@ -50,5 +47,19 @@ class HashTableTest {
     void rehash(){
         hashTable.add(51, "Hi 51");
         assertEquals(hashTable.get(51),"Hi 51");
+    }
+
+    @Test
+    void contains(){
+        assertFalse(hashTable.contains("Hi 11"));
+        hashTable.add(11, "Hi 11");
+        assertTrue(hashTable.contains("Hi 11"));
+    }
+
+    @Test
+    void listAll(){
+        for (int i = 0; i <= 10; i++) {
+            assertTrue(hashTable.listAll().contains("Hi " + i));
+        }
     }
 }
