@@ -61,6 +61,21 @@ public class HashTable<E> {
         size =  ((size*3)/2);
     }
 
+    public boolean contains(E o){
+        boolean found = false;
+
+        for(E object: hashTable){
+            if (object != null) {
+                if (object.equals(o)) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        return found;
+    }
+
     public int size(){
         return size;
     }
