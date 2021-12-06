@@ -19,15 +19,31 @@ public class HashTable<E> {
     }
 
     public boolean add(int key, E o) {
-        int loc = hashFunction(key), home = loc, probe = 1;
+        if (key > size()){
+            rehash();
+            add(key, o);
+        } else {
+            int loc = hashFunction(key), home = loc, probe = 1;
 
-        while (hashTable[loc] != null && probe < probeFactor) {
+            while (hashTable[loc] != null && probe < probeFactor) {
+                loc = (home + (probe * probe++)) % hashTable.length;
+            }
+            if (probe < probeFactor) {
+                hashTable[loc] = o;
+                return true;
+            } else return false;
+        }
+        return false;
+    }
+
+    public void remove(int key, E o){
+        int loc = hashFunction(key), home = loc, probe = 1;
+        while (!hashTable[loc].equals(o) && probe < probeFactor) {
             loc = (home + (probe * probe++)) % hashTable.length;
         }
         if (probe < probeFactor) {
-            hashTable[loc] = o;
-            return true;
-        } else return false;
+            hashTable[loc] = null;
+        }
     }
 
     public E get(int key) {
@@ -35,12 +51,22 @@ public class HashTable<E> {
         return hashTable[index];
     }
 
+    public void rehash() {
+        E[] hashTableNew;
+        hashTableNew = (E[]) new Object[((size*3)/2)];
+        for(int i = 0; i < hashTable.length; i++){
+            hashTableNew[i] = hashTable[i];
+        }
+        hashTable = hashTableNew;
+        size =  ((size*3)/2);
+    }
+
     public int size(){
         return size;
     }
 
     public int hashFunction(int key) {
-        return Math.abs(key% hashTable.length);
+        return Math.abs(key % hashTable.length);
     }
 }
 
