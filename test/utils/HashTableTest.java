@@ -55,4 +55,11 @@ class HashTableTest {
         hashTable.add(11, "Hi 11");
         assertTrue(hashTable.contains("Hi 11"));
     }
+
+    @Test
+    void listAll(){
+        for (int i = 0; i <= 10; i++) {
+            assertTrue(hashTable.listAll().contains("Hi " + i));
+        }
+    }
 }

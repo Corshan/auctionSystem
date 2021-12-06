@@ -76,6 +76,16 @@ public class HashTable<E> {
         return found;
     }
 
+    public String listAll(){
+        String list = "";
+
+        for(E object: hashTable){
+            list = list + object;
+        }
+
+        return list;
+    }
+
     public int size(){
         return size;
     }
