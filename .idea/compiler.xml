@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="auctionSystem" target="17" />
+      <module name="auctionSystem" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
