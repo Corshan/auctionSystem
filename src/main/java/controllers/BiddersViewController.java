@@ -3,6 +3,8 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -20,10 +22,17 @@ public class BiddersViewController {
     @FXML
     ListView<Bidder> bidderListView;
 
+    @FXML
+    Label errorMessage;
+
+    @FXML
+    ChoiceBox<String> sortChoiceBox;
+
     public void initialize(){
         for (Bidder bidder : Driver.auctionAPI.getBidders()){
             bidderListView.getItems().add(bidder);
         }
+        sortChoiceBox.getItems().addAll("A-Z", "Z-A");
     }
 
     public void switchToMainView() throws Exception{
@@ -47,9 +56,10 @@ public class BiddersViewController {
                 Bidder bidder = new Bidder(addBidderName.getText(), addBidderAddress.getText(), addBidderPhone.getText(), addBidderEmail.getText());
                 Driver.auctionAPI.addBidder(bidder);
                 bidderListView.getItems().add(bidder);
+                errorMessage.setText("");
                 clearBidderTextFields();
             }else {
-                //TODO
+                errorMessage.setText("Invalid");
             }
     }
 
