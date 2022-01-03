@@ -88,5 +88,6 @@ public class BiddersViewController {
 
     public void clear(){
         Driver.auctionAPI.clear();
+        bidderListView.getItems().clear();
     }
 }

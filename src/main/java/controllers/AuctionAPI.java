@@ -1,9 +1,14 @@
 package controllers;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import main.Driver;
 import models.AuctionLot;
 import models.Bid;
 import models.Bidder;
 import utils.ConnectedList;
+
+import java.util.Optional;
 
 public class AuctionAPI {
 
@@ -38,9 +43,15 @@ public class AuctionAPI {
     }
 
     public void clear(){
-        soldItems.clear();
-        unsoldItems.clear();
-        bidders.clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reset System");
+        alert.setHeaderText("Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            soldItems.clear();
+            unsoldItems.clear();
+            bidders.clear();
+        }
     }
 
     public ConnectedList<AuctionLot> getSoldItems() {
