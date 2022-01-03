@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import main.Driver;
@@ -42,7 +44,7 @@ public class AuctionAPI {
 
     }
 
-    public void clear(){
+    public void clear() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Reset System");
         alert.setHeaderText("Are you sure?");
@@ -51,7 +53,18 @@ public class AuctionAPI {
             soldItems.clear();
             unsoldItems.clear();
             bidders.clear();
+            try {
+             switchToMainView();
+            }catch (Exception e){
+                System.out.println(e);
+            }
         }
+    }
+
+    public void switchToMainView() throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Driver.mainStage.setScene(scene);
     }
 
     public ConnectedList<AuctionLot> getSoldItems() {
