@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LotInfoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SoldLotController">
     <children>
         <MenuBar>
             <menus>
@@ -39,7 +39,7 @@
                 </Label>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                  <HBox prefHeight="182.0" prefWidth="200.0">
+                  <HBox prefHeight="182.0" prefWidth="260.0">
                      <children>
                               <VBox prefHeight="182.0" prefWidth="100.0">
                                   <children>
@@ -69,7 +69,7 @@
                                       <Label fx:id="originDateLabel" text="Label" />
                                   </children>
                               </VBox>
-                        <VBox prefHeight="182.0" prefWidth="101.0">
+                        <VBox prefHeight="182.0" prefWidth="161.0">
                            <children>
                               <Label text="Price">
                                  <font>
@@ -101,7 +101,7 @@
                   </HBox>
                     </children>
                 </AnchorPane>
-                <ListView prefHeight="152.0" prefWidth="465.0" />
+                <ListView fx:id="bidListView" prefHeight="152.0" prefWidth="465.0" />
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

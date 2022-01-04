@@ -56,7 +56,7 @@ public class MainViewController {
     public void switchToItemViewSold(MouseEvent mouseEvent) throws Exception{
         if (mouseEvent.getClickCount() == 2) {
             currentAuctionLot = soldItems.getSelectionModel().getSelectedItem();
-            FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("unsold-item-info-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("sold-item-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Driver.mainStage.setScene(scene);
         }

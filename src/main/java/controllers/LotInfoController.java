@@ -11,7 +11,7 @@ import models.Bid;
 import models.Bidder;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
 import java.util.Optional;
 
 public class LotInfoController {
@@ -69,7 +69,6 @@ public class LotInfoController {
             try {
                 originDate.setValue(LocalDate.parse(currentAuctionLot.getOriginDate()));
             } catch (Exception e) {
-                System.out.println(e);
                 originDate.setPromptText(currentAuctionLot.getOriginDate());
             }
             priceTextField.setText(currentAuctionLot.getPrice() + "");
@@ -112,6 +111,31 @@ public class LotInfoController {
         }
     }
 
+    public void sellLot() {
+        try {
+            float amount = currentAuctionLot.getBids().get(currentAuctionLot.getBids().size() - 1).getAmount();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sell Item");
+            alert.setHeaderText("Are you sure?");
+            alert.setContentText("Current Highest Bid: €" + amount);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                currentAuctionLot.setSalePrice(amount);
+                currentAuctionLot.setSaleTime(LocalTime.now());
+                currentAuctionLot.setSaleDate(LocalDate.now());
+                Driver.auctionAPI.sellAuctionLot(currentAuctionLot);
+                FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("sold-item-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                Driver.mainStage.setScene(scene);
+            }
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sell Item");
+            alert.setHeaderText("There are no bids on this item");
+            alert.show();
+        }
+    }
+
     public void showAddBid() {
         if (addBid.isSelected()) {
             bidHBox.setVisible(true);
@@ -126,7 +150,7 @@ public class LotInfoController {
             Bid bid = new Bid(Float.parseFloat(amount.getText()), java.time.LocalDate.now(), java.time.LocalTime.now());
             if (Driver.auctionAPI.findBidder(bidderName.getText()) != null) {
                 Bidder bidder = Driver.auctionAPI.findBidder(bidderName.getText());
-                switch (currentAuctionLot.addBid(bid)){
+                switch (currentAuctionLot.addBid(bid)) {
                     case -1:
                         warningLabel.setText("Amount below asking price");
                         break;
@@ -140,7 +164,7 @@ public class LotInfoController {
                         listBid();
                         warningLabel.setText("");
                 }
-            }else {
+            } else {
                 warningLabel.setText("Unable to find Bidder");
             }
         } catch (Exception e) {

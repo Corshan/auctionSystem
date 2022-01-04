@@ -2,6 +2,9 @@ package models;
 
 import utils.ConnectedList;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class AuctionLot {
 
     private String title;
@@ -10,8 +13,8 @@ public class AuctionLot {
     private String originDate;
     private float price;
     private String imageURL;
-    private String saleDate;
-    private String saleTime;
+    private LocalDate saleDate;
+    private LocalTime saleTime;
     private float salePrice;
     private ConnectedList<Bid> bids;
 
@@ -22,9 +25,6 @@ public class AuctionLot {
         this.originDate = originDate;
         this.price = price;
         this.imageURL = imageURL;
-        this.saleDate = "Not Sold";
-        this.saleTime = "Not Sold";
-        this.salePrice = 0;
         this.bids = new ConnectedList<>();
     }
 
@@ -92,19 +92,19 @@ public class AuctionLot {
         this.imageURL = imageURL;
     }
 
-    public String getSaleDate() {
+    public LocalDate getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(String saleDate) {
+    public void setSaleDate(LocalDate saleDate) {
         this.saleDate = saleDate;
     }
 
-    public String getSaleTime() {
+    public LocalTime getSaleTime() {
         return saleTime;
     }
 
-    public void setSaleTime(String saleTime) {
+    public void setSaleTime(LocalTime saleTime) {
         this.saleTime = saleTime;
     }
 
