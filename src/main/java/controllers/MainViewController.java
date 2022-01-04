@@ -3,10 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Driver;
@@ -27,6 +24,8 @@ public class MainViewController {
     AnchorPane addPane;
     @FXML
     Button addButton, searchButton;
+    @FXML
+    ChoiceBox<String> sortBy;
 
     public static AuctionLot currentAuctionLot;
 
@@ -38,6 +37,9 @@ public class MainViewController {
         for (AuctionLot auctionLot: Driver.auctionAPI.getSoldItems()){
             soldItems.getItems().add(auctionLot);
         }
+
+        sortBy.getItems().add("A-Z");
+        sortBy.getItems().add("Z-A");
     }
 
     public void switchToBiddersView() throws Exception{
@@ -91,6 +93,15 @@ public class MainViewController {
     }
 
     @FXML
+    public void search(){
+        if(sortBy.getSelectionModel().getSelectedItem() == "A-Z"){
+            searchNameAscending();
+        } else if(sortBy.getSelectionModel().getSelectedItem() == "Z-A"){
+            searchNameDescending();
+        }
+    }
+
+    @FXML
     public void searchNameAscending(){
         unsoldItems.getItems().clear();
         soldItems.getItems().clear();
@@ -124,7 +135,34 @@ public class MainViewController {
 
     @FXML
     public void searchNameDescending(){
+        unsoldItems.getItems().clear();
+        soldItems.getItems().clear();
 
+        ConnectedList<AuctionLot> unsoldResults = new ConnectedList<>();
+        ConnectedList<AuctionLot> soldResults = new ConnectedList<>();
+
+        for(AuctionLot auctionLot: Driver.auctionAPI.getUnsoldItems()){
+            if(auctionLot.getTitle().contains(searchBar.getText())){
+                unsoldResults.add(auctionLot);
+            }
+        }
+
+        for(AuctionLot auctionLot: Driver.auctionAPI.getSoldItems()){
+            if(auctionLot.getTitle().contains(searchBar.getText())){
+                soldResults.add(auctionLot);
+            }
+        }
+
+        unsoldResults.mergeSort((a,b) ->b.getTitle().compareTo(a.getTitle()));
+        soldResults.mergeSort((a,b) ->b.getTitle().compareTo(a.getTitle()));
+
+        for (AuctionLot auctionLot: unsoldResults){
+            unsoldItems.getItems().add(auctionLot);
+        }
+
+        for (AuctionLot auctionLot: soldResults){
+            soldItems.getItems().add(auctionLot);
+        }
     }
 
     public void clearAuctionLotTextFields(){
