@@ -87,18 +87,6 @@
                                  </font>
                               </Label>
                               <Label fx:id="imageLabel" text="Label" />
-                              <Label text="Sale Time">
-                                 <font>
-                                    <Font name="System Bold Italic" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="saleTimeLabel" text="Label" />
-                              <Label text="Sale Price">
-                                 <font>
-                                    <Font name="System Bold Italic" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="salePriceLabel" text="Label" />
                            </children>
                         </VBox>
                      </children>

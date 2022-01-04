@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class LotInfoController {
     @FXML
-    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, saleTimeLabel, salePriceLabel, warningLabel;
+    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, warningLabel;
     @FXML
     TextField titleTextField, descriptionTextField, typeTextField, priceTextField, imageTextField;
     @FXML
@@ -41,8 +41,6 @@ public class LotInfoController {
         originDateLabel.setText(currentAuctionLot.getOriginDate());
         priceLabel.setText(currentAuctionLot.getPrice() + "");
         imageLabel.setText(currentAuctionLot.getImageURL());
-        saleTimeLabel.setText(currentAuctionLot.getSaleTime() + currentAuctionLot.getSaleDate());
-        salePriceLabel.setText(currentAuctionLot.getSalePrice() + "");
         group = new ToggleGroup();
         editButton.setToggleGroup(group);
         addBid.setToggleGroup(group);
