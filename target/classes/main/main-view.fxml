@@ -50,10 +50,26 @@
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></TextField>
-                  <Button fx:id="searchButton" onAction="#searchNameAscending" mnemonicParsing="false" text="Search">
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" text="Search">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Sort By">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Label>
+                  <ChoiceBox fx:id="sortBy" prefWidth="150.0" />
                </children>
             </HBox>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#toggleAddPane" text="Add Auction Lot">
