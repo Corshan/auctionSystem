@@ -142,13 +142,13 @@ public class MainViewController {
         ConnectedList<AuctionLot> soldResults = new ConnectedList<>();
 
         for(AuctionLot auctionLot: Driver.auctionAPI.getUnsoldItems()){
-            if(auctionLot.getTitle().contains(searchBar.getText())){
+            if(auctionLot.getTitle().contains(searchBar.getText()) || auctionLot.getOriginDate().contains(searchBar.getText()) || auctionLot.getType().contains(searchBar.getText()) || auctionLot.getDescription().contains(searchBar.getText())){
                 unsoldResults.add(auctionLot);
             }
         }
 
         for(AuctionLot auctionLot: Driver.auctionAPI.getSoldItems()){
-            if(auctionLot.getTitle().contains(searchBar.getText())){
+            if(auctionLot.getTitle().contains(searchBar.getText()) || auctionLot.getOriginDate().contains(searchBar.getText()) || auctionLot.getType().contains(searchBar.getText()) || auctionLot.getDescription().contains(searchBar.getText())){
                 soldResults.add(auctionLot);
             }
         }
