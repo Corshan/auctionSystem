@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class LotInfoController {
     @FXML
-    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, saleTimeLabel, salePriceLabel;
+    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, saleTimeLabel, salePriceLabel, warningLabel;
     @FXML
     TextField titleTextField, descriptionTextField, typeTextField, priceTextField, imageTextField;
     @FXML
@@ -96,7 +96,7 @@ public class LotInfoController {
         typeLabel.setText(typeTextField.getText());
         try {
             originDateLabel.setText(originDate.getValue().toString());
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         priceLabel.setText(priceTextField.getText());
@@ -124,18 +124,36 @@ public class LotInfoController {
     }
 
     public void addBid() {
-        Bid bid = new Bid(Float.parseFloat(amount.getText()), java.time.LocalDate.now(), java.time.LocalTime.now());
-        Bidder bidder = Driver.auctionAPI.findBidder(bidderName.getText());
-        bidder.getBids().add(bid);
-        currentAuctionLot.addBid(bid);
-        amount.clear();
-        bidderName.clear();
-        listBid();
+        try {
+            Bid bid = new Bid(Float.parseFloat(amount.getText()), java.time.LocalDate.now(), java.time.LocalTime.now());
+            if (Driver.auctionAPI.findBidder(bidderName.getText()) != null) {
+                Bidder bidder = Driver.auctionAPI.findBidder(bidderName.getText());
+                switch (currentAuctionLot.addBid(bid)){
+                    case -1:
+                        warningLabel.setText("Amount below asking price");
+                        break;
+                    case 0:
+                        warningLabel.setText("Amount below current highest bid");
+                        break;
+                    case 1:
+                        bidder.getBids().add(bid);
+                        amount.clear();
+                        bidderName.clear();
+                        listBid();
+                        warningLabel.setText("");
+                }
+            }else {
+                warningLabel.setText("Unable to find Bidder");
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+            warningLabel.setText("Invalid Amount");
+        }
     }
 
     public void listBid() {
         bidListView.getItems().clear();
-        for (int i = currentAuctionLot.getBids().size()-1; i >= 0; i--) {
+        for (int i = currentAuctionLot.getBids().size() - 1; i >= 0; i--) {
             bidListView.getItems().add(currentAuctionLot.getBids().get(i));
         }
     }
