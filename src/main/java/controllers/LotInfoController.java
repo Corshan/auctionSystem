@@ -128,7 +128,7 @@ public class LotInfoController {
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                 Driver.mainStage.setScene(scene);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sell Item");
             alert.setHeaderText("There are no bids on this item");
@@ -171,6 +171,26 @@ public class LotInfoController {
             System.err.println(e);
             warningLabel.setText("Invalid Amount");
         }
+    }
+
+    public void removeBid() {
+        Bid bid = bidListView.getSelectionModel().getSelectedItem();
+        if (bid != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Bid");
+            alert.setHeaderText("Are you sure?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Driver.auctionAPI.removeBid(currentAuctionLot, bid);
+                listBid();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Delete Bid");
+            alert.setHeaderText("A bid is not selected");
+            alert.show();
+        }
+
     }
 
     public void listBid() {
