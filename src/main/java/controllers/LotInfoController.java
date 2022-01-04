@@ -113,13 +113,14 @@ public class LotInfoController {
 
     public void sellLot() {
         try {
-            float amount = currentAuctionLot.getBids().get(currentAuctionLot.getBids().size() - 1).getAmount();
+            float amount = currentAuctionLot.getBids().get(0).getAmount();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Sell Item");
             alert.setHeaderText("Are you sure?");
             alert.setContentText("Current Highest Bid: €" + amount);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
+                currentAuctionLot.getBids().get(0).setWinningBid(true);
                 currentAuctionLot.setSalePrice(amount);
                 currentAuctionLot.setSaleTime(LocalTime.now());
                 currentAuctionLot.setSaleDate(LocalDate.now());
