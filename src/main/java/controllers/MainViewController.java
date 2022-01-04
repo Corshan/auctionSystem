@@ -115,5 +115,7 @@ public class MainViewController {
 
     public void clear(){
         Driver.auctionAPI.clear();
+        unsoldItems.getItems().clear();
+        soldItems.getItems().clear();
     }
 }

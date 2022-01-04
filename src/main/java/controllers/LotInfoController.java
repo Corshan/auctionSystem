@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import main.Driver;
 import models.AuctionLot;
+import models.Bid;
+import models.Bidder;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +16,7 @@ import java.util.Optional;
 
 public class LotInfoController {
     @FXML
-    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, saleTimeLabel, salePriceLabel;
+    Label titleLabel, descriptionLabel, typeLabel, originDateLabel, priceLabel, imageLabel, warningLabel;
     @FXML
     TextField titleTextField, descriptionTextField, typeTextField, priceTextField, imageTextField;
     @FXML
@@ -25,6 +27,8 @@ public class LotInfoController {
     ToggleButton editButton, addBid;
     @FXML
     HBox editFields, bidHBox;
+    @FXML
+    ListView<Bid> bidListView;
 
     private AuctionLot currentAuctionLot;
     private ToggleGroup group;
@@ -37,11 +41,10 @@ public class LotInfoController {
         originDateLabel.setText(currentAuctionLot.getOriginDate());
         priceLabel.setText(currentAuctionLot.getPrice() + "");
         imageLabel.setText(currentAuctionLot.getImageURL());
-        saleTimeLabel.setText(currentAuctionLot.getSaleTime() + currentAuctionLot.getSaleDate());
-        salePriceLabel.setText(currentAuctionLot.getSalePrice() + "");
         group = new ToggleGroup();
         editButton.setToggleGroup(group);
         addBid.setToggleGroup(group);
+        listBid();
     }
 
     public void switchToMainView() throws Exception {
@@ -65,7 +68,7 @@ public class LotInfoController {
             typeTextField.setText(currentAuctionLot.getType());
             try {
                 originDate.setValue(LocalDate.parse(currentAuctionLot.getOriginDate()));
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
                 originDate.setPromptText(currentAuctionLot.getOriginDate());
             }
@@ -78,24 +81,32 @@ public class LotInfoController {
         currentAuctionLot.setTitle(titleTextField.getText());
         currentAuctionLot.setDescription(descriptionTextField.getText());
         currentAuctionLot.setType(typeTextField.getText());
-        currentAuctionLot.setOriginDate(originDate.getValue().toString());
+        try {
+            currentAuctionLot.setOriginDate(originDate.getValue().toString());
+        } catch (Exception e) {
+
+        }
         currentAuctionLot.setPrice(Float.parseFloat(priceTextField.getText()));
         currentAuctionLot.setImageURL(imageTextField.getText());
 
         titleLabel.setText(titleTextField.getText());
         descriptionLabel.setText(descriptionTextField.getText());
         typeLabel.setText(typeTextField.getText());
-        originDateLabel.setText(originDate.getValue().toString());
+        try {
+            originDateLabel.setText(originDate.getValue().toString());
+        } catch (Exception e) {
+
+        }
         priceLabel.setText(priceTextField.getText());
         imageLabel.setText(imageTextField.getText());
     }
 
-    public void removeLot() throws Exception{
+    public void removeLot() throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Lot");
         alert.setHeaderText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             Driver.auctionAPI.removeAuctionLot(currentAuctionLot);
             switchToMainView();
         }
@@ -110,8 +121,39 @@ public class LotInfoController {
         }
     }
 
-    public void addBid(){
+    public void addBid() {
+        try {
+            Bid bid = new Bid(Float.parseFloat(amount.getText()), java.time.LocalDate.now(), java.time.LocalTime.now());
+            if (Driver.auctionAPI.findBidder(bidderName.getText()) != null) {
+                Bidder bidder = Driver.auctionAPI.findBidder(bidderName.getText());
+                switch (currentAuctionLot.addBid(bid)){
+                    case -1:
+                        warningLabel.setText("Amount below asking price");
+                        break;
+                    case 0:
+                        warningLabel.setText("Amount below current highest bid");
+                        break;
+                    case 1:
+                        bidder.getBids().add(bid);
+                        amount.clear();
+                        bidderName.clear();
+                        listBid();
+                        warningLabel.setText("");
+                }
+            }else {
+                warningLabel.setText("Unable to find Bidder");
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+            warningLabel.setText("Invalid Amount");
+        }
+    }
 
+    public void listBid() {
+        bidListView.getItems().clear();
+        for (int i = currentAuctionLot.getBids().size() - 1; i >= 0; i--) {
+            bidListView.getItems().add(currentAuctionLot.getBids().get(i));
+        }
     }
 
     public void save() {

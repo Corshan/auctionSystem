@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BidderInfoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BidderInfoController">
    <children>
       <MenuBar>
         <menus>
@@ -72,7 +72,7 @@
                   </VBox>
                   <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
                   <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeBidder" text="Delete" />
-                  <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0" visible="false">
+                  <HBox fx:id="editFields" layoutX="130.0" layoutY="-2.0" prefHeight="154.0" prefWidth="306.0" spacing="10.0">
                      <children>
                         <VBox prefHeight="154.0" prefWidth="150.0">
                            <children>
@@ -88,6 +88,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="phoneTextField" />
+                              <Label fx:id="warningLabel" />
                            </children>
                         </VBox>
                         <VBox prefHeight="154.0" prefWidth="157.0">
@@ -115,7 +116,7 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <ListView prefHeight="189.0" prefWidth="560.0" />
+            <ListView fx:id="bidsListView" prefHeight="189.0" prefWidth="560.0" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
