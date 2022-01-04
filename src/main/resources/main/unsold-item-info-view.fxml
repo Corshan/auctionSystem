@@ -162,12 +162,13 @@
                                 </VBox>
                             </children>
                         </HBox>
-                  <Button layoutX="451.0" layoutY="117.0" mnemonicParsing="false" onAction="#sellLot" prefHeight="50.0" prefWidth="101.0" text="Sell Item" />
-                  <VBox layoutX="452.0" layoutY="14.0" prefHeight="75.0" prefWidth="100.0" spacing="10.0">
+                  <Button layoutX="452.0" layoutY="138.0" mnemonicParsing="false" onAction="#sellLot" prefHeight="38.0" prefWidth="101.0" text="Sell Item" />
+                  <VBox layoutX="453.0" prefHeight="122.0" prefWidth="100.0" spacing="10.0">
                      <children>
                               <ToggleButton fx:id="editButton" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
                         <ToggleButton fx:id="addBid" mnemonicParsing="false" onAction="#showAddBid" text="Add Bid" />
                               <Button mnemonicParsing="false" onAction="#removeLot" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#removeBid" text="Withdraw bid" />
                      </children>
                   </VBox>
                     </children>

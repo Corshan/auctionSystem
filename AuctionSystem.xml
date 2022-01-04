@@ -1,0 +1,200 @@
+<object-stream>
+  <controllers.AuctionAPI>
+    <soldItems>
+      <size>0</size>
+    </soldItems>
+    <unsoldItems>
+      <head>
+        <next>
+          <prev reference="../.."/>
+          <contents class="models.AuctionLot">
+            <title>ew2r</title>
+            <description></description>
+            <type></type>
+            <originDate>Unknown</originDate>
+            <price>0.0</price>
+            <imageURL></imageURL>
+            <salePrice>0.0</salePrice>
+            <bids>
+              <head>
+                <contents class="models.Bid">
+                  <amount>321.0</amount>
+                  <date>2022-01-04</date>
+                  <time>22:10:35.231159</time>
+                  <winningBid>false</winningBid>
+                </contents>
+              </head>
+              <tail reference="../head"/>
+              <size>1</size>
+            </bids>
+          </contents>
+        </next>
+        <contents class="models.AuctionLot">
+          <title>werf</title>
+          <description></description>
+          <type></type>
+          <originDate>Unknown</originDate>
+          <price>0.0</price>
+          <imageURL></imageURL>
+          <salePrice>0.0</salePrice>
+          <bids>
+            <head>
+              <next>
+                <next>
+                  <prev reference="../.."/>
+                  <contents class="models.Bid">
+                    <amount>44.0</amount>
+                    <date>2022-01-04</date>
+                    <time>22:09:54.4515542</time>
+                    <winningBid>false</winningBid>
+                  </contents>
+                </next>
+                <prev reference="../.."/>
+                <contents class="models.Bid">
+                  <amount>43.0</amount>
+                  <date>2022-01-04</date>
+                  <time>22:09:50.8559375</time>
+                  <winningBid>false</winningBid>
+                </contents>
+              </next>
+              <contents class="models.Bid">
+                <amount>23.0</amount>
+                <date>2022-01-04</date>
+                <time>22:09:47.5626175</time>
+                <winningBid>false</winningBid>
+              </contents>
+            </head>
+            <tail reference="../head/next/next"/>
+            <size>3</size>
+          </bids>
+        </contents>
+      </head>
+      <tail reference="../head/next"/>
+      <size>2</size>
+    </unsoldItems>
+    <bidders>
+      <head>
+        <next>
+          <next>
+            <next>
+              <prev reference="../.."/>
+              <contents class="models.Bidder">
+                <name>Jack</name>
+                <address></address>
+                <phone>432</phone>
+                <email></email>
+                <bids>
+                  <size>0</size>
+                </bids>
+              </contents>
+            </next>
+            <prev reference="../.."/>
+            <contents class="models.Bidder">
+              <name>Ben</name>
+              <address></address>
+              <phone>32</phone>
+              <email></email>
+              <bids>
+                <size>0</size>
+              </bids>
+            </contents>
+          </next>
+          <prev reference="../.."/>
+          <contents class="models.Bidder">
+            <name>alex</name>
+            <address></address>
+            <phone>123</phone>
+            <email></email>
+            <bids>
+              <size>0</size>
+            </bids>
+          </contents>
+        </next>
+        <contents class="models.Bidder">
+          <name>Corey</name>
+          <address></address>
+          <phone>123</phone>
+          <email></email>
+          <bids>
+            <head>
+              <next>
+                <next>
+                  <next>
+                    <prev reference="../.."/>
+                    <contents class="models.Bid" reference="../../../../../../../../../unsoldItems/head/contents/bids/head/contents"/>
+                  </next>
+                  <prev reference="../.."/>
+                  <contents class="models.Bid" reference="../../../../../../../../unsoldItems/head/contents/bids/head/next/contents"/>
+                </next>
+                <prev reference="../.."/>
+                <contents class="models.Bid" reference="../../../../../../../unsoldItems/head/contents/bids/head/next/next/contents"/>
+              </next>
+              <contents class="models.Bid" reference="../../../../../../unsoldItems/head/next/contents/bids/head/contents"/>
+            </head>
+            <tail reference="../head/next/next/next"/>
+            <size>4</size>
+          </bids>
+        </contents>
+      </head>
+      <tail reference="../head/next/next/next"/>
+      <size>4</size>
+    </bidders>
+    <bidderHashTable>
+      <hashTable>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <models.Bidder reference="../../../bidders/head/contents"/>
+        <models.Bidder reference="../../../bidders/head/next/contents"/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <models.Bidder reference="../../../bidders/head/next/next/contents"/>
+        <models.Bidder reference="../../../bidders/head/next/next/next/contents"/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+        <null/>
+      </hashTable>
+      <probeFactor>50</probeFactor>
+      <size>50</size>
+      <count>4</count>
+    </bidderHashTable>
+  </controllers.AuctionAPI>
+</object-stream>

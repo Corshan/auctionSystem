@@ -38,6 +38,7 @@ public class BidderInfoController {
         addressLabel.setText(currentBidder.getAddress());
         emailLabel.setText(currentBidder.getEmail());
 
+        currentBidder.getBids().mergeSort((a,b)-> a.getTime().compareTo(b.getTime()));
         for (Bid bid : currentBidder.getBids()) {
             bidsListView.getItems().add(bid);
         }

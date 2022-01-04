@@ -52,15 +52,19 @@ public class AuctionAPI {
         soldItems.add(auctionLot);
     }
 
+    public void removeBid(AuctionLot auctionLot, Bid bid){
+        auctionLot.getBids().remove(bid);
+        for (Bidder bidder : bidders){
+            for (Bid bid1 : bidder.getBids()){
+                if (bid.equals(bid1)){
+                    bidder.getBids().remove(bid);
+                }
+            }
+        }
+    }
 
     public Bidder findBidder(String phone){
         return bidderHashTable.get(Integer.parseInt(phone));
-//        for (Bidder bidder : bidders){
-//            if (bidder.getName().equalsIgnoreCase(name)){
-//                return bidder;
-//            }
-//        }
-//        return null;
     }
 
     public void clear() {

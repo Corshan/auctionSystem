@@ -88,6 +88,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="phoneTextField" />
+                              <Label fx:id="warningLabel" />
                            </children>
                         </VBox>
                         <VBox prefHeight="154.0" prefWidth="157.0">
@@ -115,7 +116,7 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <ListView prefHeight="189.0" prefWidth="560.0" />
+            <ListView fx:id="bidsListView" prefHeight="189.0" prefWidth="560.0" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
