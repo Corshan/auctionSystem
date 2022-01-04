@@ -93,11 +93,11 @@
                   </HBox>
                         <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
                         <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeLot" text="Delete" />
-                  <HBox fx:id="bidHBox" layoutX="189.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="122.0" prefWidth="255.0" visible="false">
+                  <HBox fx:id="bidHBox" layoutX="189.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="122.0" prefWidth="255.0">
                      <children>
                         <AnchorPane prefHeight="122.0" prefWidth="80.0">
                            <children>
-                              <Label layoutY="5.0" text="Bidder Name" />
+                              <Label layoutY="5.0" text="Bidder No." />
                               <Label layoutX="14.0" layoutY="40.0" text="Amount" />
                            </children>
                         </AnchorPane>
