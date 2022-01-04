@@ -36,7 +36,6 @@ public class AuctionLot {
             }
             if (bid.getAmount() > bids.get(bids.size()-1).getAmount()) {
                 bids.add(bid);
-                //TODO
                 return 1;
             }
 
