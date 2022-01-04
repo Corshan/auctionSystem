@@ -28,6 +28,22 @@ public class AuctionLot {
         this.bids = new ConnectedList<>();
     }
 
+    public int addBid(Bid bid) {
+        if (bid.getAmount() > price) {
+            if (bids.size() == 0) {
+                bids.add(bid);
+                return 1;
+            }
+            if (bid.getAmount() > bids.get(bids.size()-1).getAmount()) {
+                bids.add(bid);
+                return 1;
+            }
+
+            return 0;
+        }
+        return -1;
+    }
+
     public String getTitle() {
         return title;
     }

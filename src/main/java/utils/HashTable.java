@@ -5,6 +5,7 @@ public class HashTable<E> {
     E[] hashTable;
     int probeFactor;
     private int size;
+    private int count;
 
     public HashTable(int size) {
         hashTable = (E[]) new Object[size];
@@ -19,7 +20,7 @@ public class HashTable<E> {
     }
 
     public boolean add(int key, E o) {
-        if (key > size()){
+        if (count >= size()){
             rehash();
             add(key, o);
         } else {
@@ -30,6 +31,7 @@ public class HashTable<E> {
             }
             if (probe < probeFactor) {
                 hashTable[loc] = o;
+                count++;
                 return true;
             } else return false;
         }
@@ -43,6 +45,7 @@ public class HashTable<E> {
         }
         if (probe < probeFactor) {
             hashTable[loc] = null;
+            count--;
         }
     }
 

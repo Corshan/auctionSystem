@@ -11,7 +11,7 @@ class HashTableTest {
 
     @BeforeEach
     void setUp() {
-        for(int i = 0; i <= 10; i++){
+        for(int i = 0; i <= 50; i++){
             hashTable.add(i, "Hi " + i);
         }
     }
@@ -23,9 +23,9 @@ class HashTableTest {
 
     @Test
     void add() {
-        assertNull(hashTable.get(11));
-        hashTable.add(11, "Hi 11");
-        assertEquals(hashTable.get(11), "Hi 11");
+        assertNull(hashTable.get(51));
+        hashTable.add(51, "Hi 51");
+        assertEquals(hashTable.get(51), "Hi 51");
     }
 
     @Test
@@ -46,14 +46,14 @@ class HashTableTest {
     @Test
     void rehash(){
         hashTable.add(51, "Hi 51");
-        assertEquals(hashTable.get(51),"Hi 51");
+        assertEquals("Hi 51",hashTable.get(51));
     }
 
     @Test
     void contains(){
-        assertFalse(hashTable.contains("Hi 11"));
-        hashTable.add(11, "Hi 11");
-        assertTrue(hashTable.contains("Hi 11"));
+        assertFalse(hashTable.contains("Hi 51"));
+        hashTable.add(11, "Hi 51");
+        assertTrue(hashTable.contains("Hi 51"));
     }
 
     @Test

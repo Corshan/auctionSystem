@@ -87,24 +87,30 @@
                                  </font>
                               </Label>
                               <Label fx:id="imageLabel" text="Label" />
-                              <Label text="Sale Time">
-                                 <font>
-                                    <Font name="System Bold Italic" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="saleTimeLabel" text="Label" />
-                              <Label text="Sale Price">
-                                 <font>
-                                    <Font name="System Bold Italic" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="salePriceLabel" text="Label" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
                         <ToggleButton fx:id="editButton" layoutX="455.0" layoutY="1.0" mnemonicParsing="false" onAction="#showEditFields" text="Edit" />
-                        <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" text="Delete" onAction="#removeAuctionLot"/>
+                        <Button layoutX="501.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeLot" text="Delete" />
+                  <HBox fx:id="bidHBox" layoutX="189.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="122.0" prefWidth="255.0">
+                     <children>
+                        <AnchorPane prefHeight="122.0" prefWidth="80.0">
+                           <children>
+                              <Label layoutY="5.0" text="Bidder No." />
+                              <Label layoutX="14.0" layoutY="40.0" text="Amount" />
+                           </children>
+                        </AnchorPane>
+                        <VBox prefHeight="122.0" prefWidth="202.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="bidderName" />
+                              <TextField fx:id="amount" />
+                              <Button mnemonicParsing="false" onAction="#addBid" text="Add" />
+                              <Label fx:id="warningLabel" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                         <HBox fx:id="editFields" layoutX="202.0" layoutY="-2.0" prefHeight="182.0" prefWidth="242.0" spacing="10.0" visible="false">
                             <children>
                                 <VBox prefHeight="182.0" prefWidth="114.0">
@@ -151,16 +157,17 @@
                               <TextField fx:id="imageTextField" />
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                                <Button alignment="CENTER_RIGHT" layoutX="90.0" layoutY="12.0" mnemonicParsing="false" onAction="#editAuctionLot" text="Save" />
+                                                <Button alignment="CENTER_RIGHT" layoutX="90.0" layoutY="12.0" mnemonicParsing="false" onAction="#editBidder" text="Save" />
                                  </children>
                               </AnchorPane>
                                     </children>
                                 </VBox>
                             </children>
                         </HBox>
+                  <ToggleButton fx:id="addBid" layoutX="457.0" layoutY="40.0" mnemonicParsing="false" onAction="#showAddBid" text="Add Bid" />
                     </children>
                 </AnchorPane>
-                <ListView prefHeight="152.0" prefWidth="465.0" />
+                <ListView fx:id="bidListView" prefHeight="152.0" prefWidth="465.0" />
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
