@@ -11,12 +11,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.Driver;
 import models.AuctionLot;
+import utils.ConnectedList;
 
 import java.time.temporal.Temporal;
+import java.util.Comparator;
 
 public class MainViewController {
     @FXML
-    TextField title, description, type, price, image;
+    TextField title, description, type, price, image, searchBar;
     @FXML
     DatePicker originDate;
     @FXML
@@ -24,7 +26,7 @@ public class MainViewController {
     @FXML
     AnchorPane addPane;
     @FXML
-    Button addButton;
+    Button addButton, searchButton;
 
     public static AuctionLot currentAuctionLot;
 
@@ -86,6 +88,43 @@ public class MainViewController {
             addPane.setVisible(true);
             addButton.setText("Hide");
         }
+    }
+
+    @FXML
+    public void searchNameAscending(){
+        unsoldItems.getItems().clear();
+        soldItems.getItems().clear();
+
+        ConnectedList<AuctionLot> unsoldResults = new ConnectedList<>();
+        ConnectedList<AuctionLot> soldResults = new ConnectedList<>();
+
+        for(AuctionLot auctionLot: Driver.auctionAPI.getUnsoldItems()){
+            if(auctionLot.getTitle().contains(searchBar.getText())){
+                unsoldResults.add(auctionLot);
+            }
+        }
+
+        for(AuctionLot auctionLot: Driver.auctionAPI.getSoldItems()){
+            if(auctionLot.getTitle().contains(searchBar.getText())){
+                soldResults.add(auctionLot);
+            }
+        }
+
+        unsoldResults.mergeSort(Comparator.comparing(AuctionLot::getTitle));
+        soldResults.mergeSort(Comparator.comparing(AuctionLot::getTitle));
+
+        for (AuctionLot auctionLot: unsoldResults){
+            unsoldItems.getItems().add(auctionLot);
+        }
+
+        for (AuctionLot auctionLot: soldResults){
+            soldItems.getItems().add(auctionLot);
+        }
+    }
+
+    @FXML
+    public void searchNameDescending(){
+
     }
 
     public void clearAuctionLotTextFields(){
