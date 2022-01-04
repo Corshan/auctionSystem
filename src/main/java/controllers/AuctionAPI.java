@@ -48,8 +48,8 @@ public class AuctionAPI {
     public void removeAuctionLot(AuctionLot auctionLot){unsoldItems.remove(auctionLot);}
 
 
-    public Bidder findBidder(String name){
-        return bidderHashTable.get(Integer.parseInt(name));
+    public Bidder findBidder(String phone){
+        return bidderHashTable.get(Integer.parseInt(phone));
 //        for (Bidder bidder : bidders){
 //            if (bidder.getName().equalsIgnoreCase(name)){
 //                return bidder;
