@@ -14,9 +14,9 @@ class AuctionLotTest {
     @BeforeEach
     void setUp() {
         auctionLot1 = new AuctionLot("Chair", "Blue Chair", "Chair", "20-19-2020", 100, "None");
-        bid1 = new Bid(90, "20-02-2022", "3pm");
-        bid2 = new Bid(110, "20-02-2022", "3pm");
-        bid3 = new Bid(120, "20-02-2022", "3pm");
+        bid1 = new Bid(90, java.time.LocalDate.now(), java.time.LocalTime.now());
+        bid2 = new Bid(110, java.time.LocalDate.now(), java.time.LocalTime.now());
+        bid3 = new Bid(120, java.time.LocalDate.now(), java.time.LocalTime.now());
     }
 
     @AfterEach

@@ -10,6 +10,7 @@ import models.Bid;
 import models.Bidder;
 import utils.ConnectedList;
 
+import java.util.Comparator;
 import java.util.Optional;
 
 public class AuctionAPI {
@@ -40,8 +41,13 @@ public class AuctionAPI {
 
     }
 
-    public void findBidder(String name){
-
+    public Bidder findBidder(String name){
+        for (Bidder bidder : bidders){
+            if (bidder.getName().equalsIgnoreCase(name)){
+                return bidder;
+            }
+        }
+        return null;
     }
 
     public void clear() {
