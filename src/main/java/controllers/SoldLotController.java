@@ -49,6 +49,7 @@ public class SoldLotController {
 
     public void listBid() {
         bidListView.getItems().clear();
+        currentAuctionLot.getBids().mergeSort((a,b) -> (int) (b.getAmount()-a.getAmount()));
         for (int i = currentAuctionLot.getBids().size() - 1; i >= 0; i--) {
             bidListView.getItems().add(currentAuctionLot.getBids().get(i));
         }

@@ -34,9 +34,11 @@ class ConnectedListTest {
 
     @Test
     void addFromTop(){
+        assertEquals(5, list.size());
         list.addFromTop("Yeah");
         assertEquals(list.get(0), "Yeah");
         assertEquals(list.get(1), "Hi 0");
+        assertEquals(6, list.size());
     }
 
     @Test
