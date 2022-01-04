@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import main.Driver;
+import models.Bid;
 import models.Bidder;
 
 import java.util.Optional;
@@ -24,6 +25,9 @@ public class BidderInfoController {
     @FXML
     TextField nameTextfield, phoneTextField, addressTextField, emailTextField;
 
+    @FXML
+    ListView<Bid> bidsListView;
+
     private Bidder currentBidder;
 
     public void initialize() {
@@ -32,6 +36,10 @@ public class BidderInfoController {
         phoneLabel.setText(currentBidder.getPhone());
         addressLabel.setText(currentBidder.getAddress());
         emailLabel.setText(currentBidder.getEmail());
+
+        for (Bid bid : currentBidder.getBids()){
+            bidsListView.getItems().add(bid);
+        }
     }
 
     public void switchToMainView() throws Exception {
