@@ -197,7 +197,7 @@ public class LotInfoController {
     public void listBid() {
         bidListView.getItems().clear();
         currentAuctionLot.getBids().mergeSort((a,b) -> (int) (b.getAmount()-a.getAmount()));
-        for (int i = 0; i <= currentAuctionLot.getBids().size(); i++) {
+        for (int i = 0; i < currentAuctionLot.getBids().size(); i++) {
             bidListView.getItems().add(currentAuctionLot.getBids().get(i));
         }
     }
