@@ -4,6 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AuctionLotTest {
@@ -29,6 +32,12 @@ class AuctionLotTest {
 
     @Test
     void addBid(){
+        assertEquals(-1, auctionLot1.addBid(bid1));
+        assertEquals(1, auctionLot1.addBid(bid3));
+        assertEquals(0, auctionLot1.addBid(bid2));
 
+        auctionLot1.getBids().clear();
+        assertEquals(1, auctionLot1.addBid(bid2));
+        assertEquals(1, auctionLot1.addBid(bid3));
     }
 }
