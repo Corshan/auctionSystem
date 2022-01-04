@@ -53,9 +53,9 @@ public class Bid {
     @Override
     public String toString() {
         if (winningBid) {
-            return "Amount=" + amount + ", Date = " + date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ", Time = " + time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " Sold";
+            return "Amount =" + amount + ", Date = " + date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ", Time = " + time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " Sold";
         }else {
-            return "Amount=" + amount + ", Date = " + date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ", Time = " + time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            return "Amount =" + amount + ", Date = " + date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ", Time = " + time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         }
     }
 }
