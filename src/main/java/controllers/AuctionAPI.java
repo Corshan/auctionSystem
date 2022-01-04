@@ -47,6 +47,11 @@ public class AuctionAPI {
 
     public void removeAuctionLot(AuctionLot auctionLot){unsoldItems.remove(auctionLot);}
 
+    public void sellAuctionLot(AuctionLot auctionLot){
+        unsoldItems.remove(auctionLot);
+        soldItems.add(auctionLot);
+    }
+
 
     public Bidder findBidder(String phone){
         return bidderHashTable.get(Integer.parseInt(phone));
