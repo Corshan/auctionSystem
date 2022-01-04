@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BiddersViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BiddersViewController">
    <children>
       <MenuBar>
         <menus>
@@ -42,7 +42,7 @@
                <children>
                   <VBox prefHeight="304.0" prefWidth="271.0">
                      <children>
-                        <VBox prefHeight="38.0" prefWidth="271.0">
+                        <VBox prefHeight="38.0" prefWidth="271.0" spacing="5.0">
                            <children>
                               <Label text="Search">
                                  <font>
@@ -52,13 +52,19 @@
                               <HBox prefHeight="11.0" prefWidth="271.0" spacing="10.0">
                                  <children>
                                     <Label text="Name" />
-                                    <TextField />
-                                    <Button mnemonicParsing="false" text="Search" />
+                                    <TextField fx:id="bidderName" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="11.0" prefWidth="271.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Address" />
+                                    <TextField fx:id="bidderAddress" />
+                                    <Button mnemonicParsing="false" onAction="#searchBidders" text="Search" />
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="141.0" prefWidth="271.0">
+                        <VBox prefHeight="86.0" prefWidth="271.0">
                            <children>
                               <Label text="Sort By">
                                  <font>
