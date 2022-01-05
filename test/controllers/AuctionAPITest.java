@@ -19,7 +19,7 @@ class AuctionAPITest {
         auctionAPI = new AuctionAPI();
         auctionLot1 = new AuctionLot("Chair", "You sit on it", "Chair", "Unknown", 0, "image");
         bidder1 = new Bidder("Corey", "5 Fear Street", "5812320", "@email.com");
-        bidder2 = new Bidder("Jack", "4 Fear Street", "53420", "@email.com");
+        bidder2 = new Bidder("Jack", "4 Fear Street", "63420", "@email.com");
 
         auctionAPI.addBidder(bidder1);
         auctionAPI.addBidder(bidder2);
@@ -71,7 +71,7 @@ class AuctionAPITest {
 
     @Test
     void findBidder() {
-        assertEquals(bidder1, auctionAPI.getBidderHashTable().get(Integer.parseInt(bidder1.getPhone())));
-        assertEquals(bidder2, auctionAPI.getBidderHashTable().get(Integer.parseInt(bidder2.getPhone())));
+        assertEquals(bidder1, auctionAPI.findBidder(bidder1.getPhone()));
+        assertEquals(bidder2, auctionAPI.findBidder(bidder2.getPhone()));
     }
 }
